@@ -22,7 +22,7 @@
         <div id="app">
             <imageslider 
                 :slides='slides' 
-                :animate='false' 
+                :animate='true' 
                 :delay='5000'>
             </imageslider>
         </div>
