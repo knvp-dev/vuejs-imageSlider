@@ -33,25 +33,25 @@
 				{ id: 4, src: '/images/4.jpg', title: 'image 4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus suscipit quaerat porro fuga ab incidunt eos magnam, soluta aut reiciendis placeat, nostrum repellendus earum assumenda expedita nisi, obcaecati excepturi itaque!', url: '/' }
 				],
 				activeSlide: 0,
-				delay: 10000,
+				delay: 5000,
 				timer: null,
 				animate: true
 			}
 		},
 		methods:{
+			animateSlides(){
+				if(this.activeSlide >= (this.slides.length)){
+					this.activeSlide = 0;
+				}
+				$('.slide').eq(this.activeSlide).css('opacity',1).css('z-index',1);
+				$('.slide').eq(this.activeSlide - 1).css('opacity',0).css('z-index',0);
+				this.activeSlide++;
+			},
 			startAnimation(){
 				$('.slide').css('opacity',0).css('z-index',0);
 				$('.slide').eq(0).css('opacity',1).css('z-index',1);
 				this.activeSlide++;
-				this.timer = setInterval( this.animate, this.delay);
-			},
-			animate(){
-				$('.slide').eq(this.activeSlide).css('opacity',1).css('z-index',1);
-				$('.slide').eq(this.activeSlide - 1).css('opacity',0).css('z-index',0);
-				this.activeSlide++;
-				if(this.activeSlide > (this.slides.length - 1)){
-					this.activeSlide = 0;
-				}
+				this.timer = setInterval(this.animateSlides, this.delay);
 			},
 			activateSlide(slide_id){
 				this.activeSlide = slide_id - 1;
@@ -59,7 +59,7 @@
 				$('.slide').eq(this.activeSlide).css('opacity',1).css('z-index',1);
 				this.activeSlide++;
 				clearInterval(this.timer);
-				this.timer = setInterval( this.animate , this.delay);
+				this.timer = setInterval(this.animateSlides, this.delay);
 			}
 		}
 	}
