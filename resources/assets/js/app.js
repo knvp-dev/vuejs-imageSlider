@@ -16,5 +16,15 @@ require('./bootstrap');
 Vue.component('imageslider', require('./components/ImageSlider.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data:{
+    	
+    		slides: [
+				{ id: 1, src: '/images/1.png', title: 'image 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, a excepturi fugiat nihil in deserunt, natus possimus est atque rem incidunt soluta. Itaque quis dolor perspiciatis natus vel, voluptate possimus.', url: '/' },
+				{ id: 2, src: '/images/2.jpg', title: 'image 2', description: 'this is the second image', url: null },
+				{ id: 3, src: '/images/3.png', title: 'image 3', description: 'this is the third image', url: null },
+				{ id: 4, src: '/images/4.jpg', title: 'image 4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus suscipit quaerat porro fuga ab incidunt eos magnam, soluta aut reiciendis placeat, nostrum repellendus earum assumenda expedita nisi, obcaecati excepturi itaque!', url: '/' }
+				]
+    	
+    }
 });

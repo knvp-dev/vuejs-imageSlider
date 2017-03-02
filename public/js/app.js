@@ -11200,7 +11200,12 @@ __webpack_require__(31);
 Vue.component('imageslider', __webpack_require__(36));
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+
+    slides: [{ id: 1, src: '/images/1.png', title: 'image 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, a excepturi fugiat nihil in deserunt, natus possimus est atque rem incidunt soluta. Itaque quis dolor perspiciatis natus vel, voluptate possimus.', url: '/' }, { id: 2, src: '/images/2.jpg', title: 'image 2', description: 'this is the second image', url: null }, { id: 3, src: '/images/3.png', title: 'image 3', description: 'this is the third image', url: null }, { id: 4, src: '/images/4.jpg', title: 'image 4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus suscipit quaerat porro fuga ab incidunt eos magnam, soluta aut reiciendis placeat, nostrum repellendus earum assumenda expedita nisi, obcaecati excepturi itaque!', url: '/' }]
+
+  }
 });
 
 /***/ }),
@@ -12082,13 +12087,12 @@ module.exports = function spread(callback) {
 	mounted: function mounted() {
 		this.startAnimation();
 	},
+
+	props: ["slides", "delay", "animate"],
 	data: function data() {
 		return {
-			slides: [{ id: 1, src: '/images/1.png', title: 'image 1', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, a excepturi fugiat nihil in deserunt, natus possimus est atque rem incidunt soluta. Itaque quis dolor perspiciatis natus vel, voluptate possimus.', url: '/' }, { id: 2, src: '/images/2.jpg', title: 'image 2', description: 'this is the second image', url: null }, { id: 3, src: '/images/3.png', title: 'image 3', description: 'this is the third image', url: null }, { id: 4, src: '/images/4.jpg', title: 'image 4', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus suscipit quaerat porro fuga ab incidunt eos magnam, soluta aut reiciendis placeat, nostrum repellendus earum assumenda expedita nisi, obcaecati excepturi itaque!', url: '/' }],
 			activeSlide: 0,
-			delay: 5000,
-			timer: null,
-			animate: true
+			timer: null
 		};
 	},
 
@@ -14559,7 +14563,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(34)();
-exports.push([module.i, "\n.image-slider{\n\twidth:100%;\n\tposition: relative;\n\theight:300px;\n}\n.slides{\n\tposition: relative;\n}\n.slide{\n\theight:300px;\n\twidth:100%;\n\toverflow:hidden;\n\tposition: absolute;\n\topacity: 0;\n\t-webkit-transition:opacity 1s;\n\ttransition: opacity 1s;\n\tz-index:1;\n}\n.slide img{\n\tmin-width:100%;\n\tmin-height:300px;\n\tposition: absolute;\n\tleft:50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n\ttop:50%;\n}\n.animate-image{\n\t-webkit-animation: upAndDown 35s linear infinite;\n\t        animation: upAndDown 35s linear infinite;\n}\n.slide-caption{\n\tbackground-color:rgba(0,0,0,.5);\n\tcolor:white;\n\tposition: absolute;\n\tbottom:10px;\n\tpadding:5px 20px;\n\tmax-width:400px;\n\tbox-shadow: 0px 2px 5px 0px rgba(0,0,0,0.39);\n}\n.slide-caption h1{\n\ttext-transform: uppercase;\n\tfont-size:1.5em;\n}\n.button-open{\n\tpadding:5px 20px;\n\tborder:2px solid white;\n\tcolor:white;\n\tmargin:5px;\n\tfloat:left;\n\tcursor:pointer;\n\tborder-radius:45px;\n}\n.button-open:hover{\n\tbackground-color:white;\n\tcolor:black;\n\ttext-decoration: none;\n}\n.slides-controls{\n\tz-index:1;\n\tposition: absolute;\n\ttop: -1px;\n\tleft:50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n\tborder-bottom-right-radius:14px;\n\tborder-bottom-left-radius: 14px;\n\tbackground-color:rgba(0,0,0,.2);\n\tpadding:2px 10px;\n}\n.slide-control{\n\tcolor:white;\n\tpadding:2px;\n\tcursor:pointer;\n}\n.slide-control:hover{\n\tcolor:white;\n}\n@media(max-width:400px){\n.slide-caption{\n\t\tleft:0;\n}\n}\n@-webkit-keyframes upAndDown {\n0%{\n\t\ttop: 0px;\n}\n50%{\n\t\ttop:-75%;\n}\n100%{\n\t\ttop:0px;\n}\n}\n@keyframes upAndDown {\n0%{\n\t\ttop: 0px;\n}\n50%{\n\t\ttop:-75%;\n}\n100%{\n\t\ttop:0px;\n}\n}\n", ""]);
+exports.push([module.i, "\n.image-slider{\n\twidth:100%;\n\tposition: relative;\n\theight:300px;\n}\n.slides{\n\tposition: relative;\n}\n.slide{\n\theight:300px;\n\twidth:100%;\n\toverflow:hidden;\n\tposition: absolute;\n\topacity: 0;\n\t-webkit-transition:opacity 1s;\n\ttransition: opacity 1s;\n\tz-index:1;\n}\n.slide img{\n\tmin-width:100%;\n\tmin-height:300px;\n\tposition: absolute;\n\tleft:50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n}\n.animate-image{\n\ttop:50%;\n\t-webkit-animation: upAndDown 35s linear infinite;\n\t        animation: upAndDown 35s linear infinite;\n}\n.slide-caption{\n\tbackground-color:rgba(0,0,0,.5);\n\tcolor:white;\n\tposition: absolute;\n\tbottom:10px;\n\tpadding:5px 20px;\n\tmax-width:400px;\n\tbox-shadow: 0px 2px 5px 0px rgba(0,0,0,0.39);\n}\n.slide-caption h1{\n\ttext-transform: uppercase;\n\tfont-size:1.5em;\n}\n.button-open{\n\tpadding:5px 20px;\n\tborder:2px solid white;\n\tcolor:white;\n\tmargin:5px;\n\tfloat:left;\n\tcursor:pointer;\n\tborder-radius:45px;\n}\n.button-open:hover{\n\tbackground-color:white;\n\tcolor:black;\n\ttext-decoration: none;\n}\n.slides-controls{\n\tz-index:1;\n\tposition: absolute;\n\ttop: -1px;\n\tleft:50%;\n\t-webkit-transform: translateX(-50%);\n\t        transform: translateX(-50%);\n\tborder-bottom-right-radius:14px;\n\tborder-bottom-left-radius: 14px;\n\tbackground-color:rgba(0,0,0,.2);\n\tpadding:2px 10px;\n}\n.slide-control{\n\tcolor:white;\n\tpadding:2px;\n\tcursor:pointer;\n}\n.slide-control:hover{\n\tcolor:white;\n}\n@media(max-width:400px){\n.slide-caption{\n\t\tleft:0;\n}\n}\n@-webkit-keyframes upAndDown {\n0%{\n\t\ttop: 0px;\n}\n50%{\n\t\ttop:-75%;\n}\n100%{\n\t\ttop:0px;\n}\n}\n@keyframes upAndDown {\n0%{\n\t\ttop: 0px;\n}\n50%{\n\t\ttop:-75%;\n}\n100%{\n\t\ttop:0px;\n}\n}\n", ""]);
 
 /***/ }),
 /* 34 */
